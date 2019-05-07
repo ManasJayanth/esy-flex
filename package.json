@@ -2,8 +2,13 @@
   "name": "esy-flex",
   "version": "2.6.4000",
   "description": "Flex packaged for esy",
-  "source": "https://github.com/westes/flex/releases/download/v2.6.4/flex-2.6.4.tar.gz#sha256:e87aae032bf07c26f85ac0ed3250998c37621d95f8bd748b31f15b33c45ee995",
-  "override": {
+  "esy": {
+    "exportedEnv": {
+      "LD_LIBRARY_PATH": {
+        "val": "#{self.lib}:$LD_LIBRARY_PATH",
+        "scope": "global"
+      }
+    },
     "buildsInSource": true,
     "build": [
       "./configure --prefix=#{self.install}",

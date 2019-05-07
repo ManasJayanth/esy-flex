@@ -1,38 +1,18 @@
 {
-  "checksum": "db90ba091f3f49df93dccd212a386c56",
-  "root": "esy-flex@link:./package.json",
+  "checksum": "0cc961f41dbf4ff5ab5654751a4ba36e",
+  "root": "esy-flex@link-dev:./package.json",
   "node": {
-    "flex@archive:https://github.com/westes/flex/releases/download/v2.6.4/flex-2.6.4.tar.gz#sha256:e87aae032bf07c26f85ac0ed3250998c37621d95f8bd748b31f15b33c45ee995@217269de": {
-      "id":
-        "flex@archive:https://github.com/westes/flex/releases/download/v2.6.4/flex-2.6.4.tar.gz#sha256:e87aae032bf07c26f85ac0ed3250998c37621d95f8bd748b31f15b33c45ee995@217269de",
-      "name": "flex",
-      "version":
-        "archive:https://github.com/westes/flex/releases/download/v2.6.4/flex-2.6.4.tar.gz#sha256:e87aae032bf07c26f85ac0ed3250998c37621d95f8bd748b31f15b33c45ee995",
-      "source": {
-        "type": "install",
-        "source": [
-          "archive:https://github.com/westes/flex/releases/download/v2.6.4/flex-2.6.4.tar.gz#sha256:e87aae032bf07c26f85ac0ed3250998c37621d95f8bd748b31f15b33c45ee995"
-        ]
-      },
-      "overrides": [
-        {
-          "buildsInSource": true,
-          "build": [ "./configure --prefix=#{self.install}", "make" ],
-          "install": [ "make install" ]
-        }
-      ],
-      "dependencies": [],
-      "devDependencies": []
-    },
-    "esy-flex@link:./package.json": {
-      "id": "esy-flex@link:./package.json",
+    "esy-flex@link-dev:./package.json": {
+      "id": "esy-flex@link-dev:./package.json",
       "name": "esy-flex",
-      "version": "link:./package.json",
-      "source": { "type": "link", "path": ".", "manifest": "package.json" },
+      "version": "link-dev:./package.json",
+      "source": {
+        "type": "link-dev",
+        "path": ".",
+        "manifest": "package.json"
+      },
       "overrides": [],
-      "dependencies": [
-        "flex@archive:https://github.com/westes/flex/releases/download/v2.6.4/flex-2.6.4.tar.gz#sha256:e87aae032bf07c26f85ac0ed3250998c37621d95f8bd748b31f15b33c45ee995@217269de"
-      ],
+      "dependencies": [],
       "devDependencies": []
     }
   }
