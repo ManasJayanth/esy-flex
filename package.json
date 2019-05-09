@@ -10,12 +10,15 @@
       }
     },
     "buildsInSource": true,
+    "buildEnv": {
+      "CC": "#{os == 'windows' ? 'x86_64-w64-mingw32-gcc.exe': 'gcc'}"
+    },
     "build": [
       "find ./ -exec touch -t 200905010101 {} +",
       [
         "bash",
         "-c",
-        "#{os == 'windows' ? './configure CC=x86_64-w64-mingw32-gcc.exe --prefix=$cur__install --host x86_64-w64-mingw32' : './configure --prefix=$cur__install'}"
+        "#{os == 'windows' ? './configure  --prefix=$cur__install --host x86_64-w64-mingw32' : './configure --prefix=$cur__install'}"
       ],
       "make"
     ],
