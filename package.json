@@ -17,5 +17,8 @@
     "install": [
       "make install"
     ]
+  },
+  "dependencies": {
+    "esy-texinfo": "esy-packages/esy-texinfo#12c14c804049ecb57b9ef27d34deeff07abb1588"
   }
 }
