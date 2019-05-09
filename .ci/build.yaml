@@ -15,5 +15,5 @@ jobs:
       displayName: 'Install esy'
   - script: esy install
     displayName: 'esy install'
-  - script: 'esy x whichs flex'
-    displayName: 'Checking library...'
+  - script: 'esy x which flex'
+    displayName: 'Checking binary...'
