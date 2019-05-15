@@ -1,5 +1,3 @@
-[![Build Status](https://dev.azure.com/prometheansacrifice/esy-packages/_apis/build/status/prometheansacrifice.esy-flex?branchName=master)](https://dev.azure.com/prometheansacrifice/esy-packages/_build/latest?definitionId=34&branchName=master)
-
 This is flex, the fast lexical analyzer generator.
 
 flex is a tool for generating scanners: programs which recognize

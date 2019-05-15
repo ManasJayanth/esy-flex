@@ -1,5 +1,5 @@
 {
-  "checksum": "896b9e29544b2d35dcfd4433219c2215",
+  "checksum": "5b0904c7b8a0cf49d7afa09e85e659f6",
   "root": "esy-flex@link-dev:./package.json",
   "node": {
     "esy-texinfo@github:esy-packages/esy-texinfo#12c14c804049ecb57b9ef27d34deeff07abb1588@d41d8cd9": {
@@ -29,8 +29,25 @@
       },
       "overrides": [],
       "dependencies": [
-        "esy-texinfo@github:esy-packages/esy-texinfo#12c14c804049ecb57b9ef27d34deeff07abb1588@d41d8cd9"
+        "esy-texinfo@github:esy-packages/esy-texinfo#12c14c804049ecb57b9ef27d34deeff07abb1588@d41d8cd9",
+        "esy-bison@github:prometheansacrifice/esy-bison#eeba47b41458df12906f2d6e3c75f0a92cdcf11a@d41d8cd9"
       ],
+      "devDependencies": []
+    },
+    "esy-bison@github:prometheansacrifice/esy-bison#eeba47b41458df12906f2d6e3c75f0a92cdcf11a@d41d8cd9": {
+      "id":
+        "esy-bison@github:prometheansacrifice/esy-bison#eeba47b41458df12906f2d6e3c75f0a92cdcf11a@d41d8cd9",
+      "name": "esy-bison",
+      "version":
+        "github:prometheansacrifice/esy-bison#eeba47b41458df12906f2d6e3c75f0a92cdcf11a",
+      "source": {
+        "type": "install",
+        "source": [
+          "github:prometheansacrifice/esy-bison#eeba47b41458df12906f2d6e3c75f0a92cdcf11a"
+        ]
+      },
+      "overrides": [],
+      "dependencies": [],
       "devDependencies": []
     }
   }

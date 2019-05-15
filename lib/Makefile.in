@@ -13,27 +13,6 @@
 # PARTICULAR PURPOSE.
 
 @SET_MAKE@
-
-# This file is part of flex.
-
-# Redistribution and use in source and binary forms, with or without
-# modification, are permitted provided that the following conditions
-# are met:
-
-# 1. Redistributions of source code must retain the above copyright
-#    notice, this list of conditions and the following disclaimer.
-# 2. Redistributions in binary form must reproduce the above copyright
-#    notice, this list of conditions and the following disclaimer in the
-#    documentation and/or other materials provided with the distribution.
-
-# Neither the name of the University nor the names of its contributors
-# may be used to endorse or promote products derived from this software
-# without specific prior written permission.
-
-# THIS SOFTWARE IS PROVIDED ``AS IS'' AND WITHOUT ANY EXPRESS OR
-# IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
-# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-# PURPOSE.
 VPATH = @srcdir@
 am__is_gnu_make = { \
   if test -z '$(MAKELEVEL)'; then \
@@ -108,7 +87,7 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-subdir = examples/manual
+subdir = lib
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/gettext.m4 \
 	$(top_srcdir)/m4/iconv.m4 $(top_srcdir)/m4/intlmacosx.m4 \
@@ -145,7 +124,7 @@ am__can_run_installinfo = \
     *) (install-info --version) >/dev/null 2>&1;; \
   esac
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
-am__DIST_COMMON = $(srcdir)/Makefile.in ChangeLog README
+am__DIST_COMMON = $(srcdir)/Makefile.in
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
 ALLOCA = @ALLOCA@
@@ -298,41 +277,6 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-EXTRA_DIST = \
-	ChangeLog \
-	Makefile.examples \
-	README \
-	cat.lex   \
-	dates.lex \
-	datetest.dat \
-	eof_rules.lex \
-	eof_test01.txt \
-	eof_test02.txt \
-	eof_test03.txt \
-	expr.lex \
-	expr.y \
-	front.lex \
-	front.y \
-	j2t.lex \
-	myname.lex \
-	myname.txt \
-	myname2.lex \
-	numbers.lex \
-	pas_include.lex \
-	pascal.lex \
-	reject.lex \
-	replace.lex \
-	string1.lex \
-	string2.lex \
-	strtest.dat \
-	unput.lex \
-	user_act.lex \
-	userinit.lex \
-	wc.lex \
-	yymore.lex \
-	yymore2.lex \
-	yymoretest.dat
-
 all: all-am
 
 .SUFFIXES:
@@ -345,9 +289,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign examples/manual/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign lib/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign examples/manual/Makefile
+	  $(AUTOMAKE) --foreign lib/Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
 	  *config.status*) \
@@ -524,6 +468,10 @@ uninstall-am:
 
 .PRECIOUS: Makefile
 
+
+# Files in the lib/ subdirectory are picked up as needed by the flex
+# build system. As such, we don't need to specify anything beyond
+# having a Makefile.am for automake to generate a Makefile.in from.
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

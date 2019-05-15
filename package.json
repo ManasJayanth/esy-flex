@@ -15,7 +15,7 @@
       [
         "bash",
         "-c",
-        "#{os == 'windows' ? './configure  --prefix=$cur__install --host x86_64-w64-mingw32 CC=x86_64-w64-mingw32-gcc.exe' : './configure --prefix=$cur__install'}"
+        "./configure --enable-bootstrap --prefix=#{self.install} #{os == 'windows' ? '--host x86_64-w64-mingw32 CC=x86_64-w64-mingw32-gcc.exe' : ''}"
       ],
       "make"
     ],
@@ -24,6 +24,7 @@
     ]
   },
   "dependencies": {
-    "esy-texinfo": "esy-packages/esy-texinfo#12c14c804049ecb57b9ef27d34deeff07abb1588"
+    "esy-texinfo": "esy-packages/esy-texinfo#12c14c804049ecb57b9ef27d34deeff07abb1588",
+    "esy-bison": "prometheansacrifice/esy-bison#eeba47b41458df12906f2d6e3c75f0a92cdcf11a"
   }
 }

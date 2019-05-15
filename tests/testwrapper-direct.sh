@@ -1,20 +1,17 @@
-#!/bin/sh
-set -vx
-set -euvx
+#!/bin/bash -vx
+set -euo pipefail
 
-# testwrapper-direct.sh: run some specialized flex tests that care where
-# they're run from.
+# testwrapper-direct.sh: run some specialized flex tests that care where they're run from.
 
 while getopts :b:s: OPTION ; do
     case $OPTION in
-        b) BINARY_DIR=$OPTARG ;;
+        b)  BINARY_DIR=$OPTARG ;;
         s) SOURCE_DIR=$OPTARG ;;
     esac
     done
 
-shift $(($OPTIND-1))
-TESTNAME=$1
+TESTNAME="${!OPTIND}"
 
-INPUT_NAME=`basename "${TESTNAME%.exe}"`.txt
+INPUT_NAME=`basename ${TESTNAME%.exe}`.txt
 
 cd ${SOURCE_DIR} && ${BINARY_DIR}/${TESTNAME} ${INPUT_NAME}

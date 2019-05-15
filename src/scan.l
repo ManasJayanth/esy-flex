@@ -74,7 +74,7 @@ extern const char *escaped_qstart, *escaped_qend;
 #define RETURNNAME \
 	if(yyleng < MAXLINE) \
          { \
-	strncpy( nmstr, yytext, sizeof(nmstr) ); \
+	strcpy( nmstr, yytext ); \
 	return NAME; \
 	 } \
 	else \
@@ -207,7 +207,7 @@ M4QEND      "]""]"
 	^{NAME}		{
 			if(yyleng < MAXLINE)
         		 {
-			strncpy( nmstr, yytext, sizeof(nmstr) );
+			strcpy( nmstr, yytext );
 			 }
 			else
 			 {
@@ -263,7 +263,8 @@ M4QEND      "]""]"
 			}
 	.		/* ignore spurious characters */
 }
-<ACTION,CODEBLOCK,ACTION_STRING,PERCENT_BRACE_ACTION,CHARACTER_CONSTANT,COMMENT,CODE_COMMENT>{
+<ACTION,CODEBLOCK,ACTION_STRING,PERCENT_BRACE_ACTION,CHARACTER_CONSTANT,
+COMMENT,CODE_COMMENT>{
    {M4QSTART}   ACTION_ECHO_QSTART;
    {M4QEND}     ACTION_ECHO_QEND;
 }
@@ -318,7 +319,7 @@ M4QEND      "]""]"
 	{NOT_WS}[^\r\n]*	{
  		        if(yyleng < MAXLINE)
  		         {
-			strncpy( nmdef, yytext, sizeof(nmdef) );
+			strcpy( nmdef, yytext );
  		         }
  		        else
  		         {
@@ -460,7 +461,7 @@ M4QEND      "]""]"
 	\"[^"\n]*\"	{
 			if(yyleng-1 < MAXLINE)
         		 {
-			strncpy( nmstr, yytext + 1, sizeof(nmstr) );
+			strcpy( nmstr, yytext + 1 );
 			 }
 			else
 			 {
@@ -637,7 +638,7 @@ M4QEND      "]""]"
 
 			if(yyleng < MAXLINE)
         		 {
-			strncpy( nmstr, yytext, sizeof(nmstr) );
+			strcpy( nmstr, yytext );
 			 }
 			else
 			 {
@@ -695,7 +696,7 @@ M4QEND      "]""]"
 
  			if(yyleng-1 < MAXLINE)
          		 {
-			strncpy( nmstr, yytext + 1, sizeof(nmstr) );
+			strcpy( nmstr, yytext + 1 );
  			 }
  			else
  			 {
@@ -919,7 +920,7 @@ nmstr[yyleng - 2 - end_is_ws] = '\0';  /* chop trailing brace */
 	{NL}	{
 		++linenum;
 		ACTION_ECHO;
-		if (bracelevel <= 0 || (doing_codeblock && indented_code)) {
+		if (bracelevel == 0 || (doing_codeblock && indented_code)) {
             if ( doing_rule_action )
                 add_action( "\tYY_BREAK]""]\n" );
 
@@ -940,16 +941,16 @@ nmstr[yyleng - 2 - end_is_ws] = '\0';  /* chop trailing brace */
         "'"             ACTION_ECHO; BEGIN(CHARACTER_CONSTANT);
 	\"		ACTION_ECHO; BEGIN(ACTION_STRING);
 	{NL} {
-                ++linenum;
-                ACTION_ECHO;
-                if (bracelevel <= 0) {
-                   if ( doing_rule_action )
-                      add_action( "\tYY_BREAK]""]\n" );
+			++linenum;
+			ACTION_ECHO;
+			if (bracelevel == 0) {
+				if ( doing_rule_action )
+                    add_action( "\tYY_BREAK]""]\n" );
 
-                   doing_rule_action = false;
-                   BEGIN(SECT2);
-                }
-             }
+                doing_rule_action = false;
+                BEGIN(SECT2);
+            }
+        }
         .      ACTION_ECHO;
 }
 
@@ -964,7 +965,7 @@ nmstr[yyleng - 2 - end_is_ws] = '\0';  /* chop trailing brace */
 <ACTION_STRING,CHARACTER_CONSTANT>{
         (\\\n)*         ACTION_ECHO;
 	\\(\\\n)*.	ACTION_ECHO;
-	{NL}	++linenum; ACTION_ECHO; if (bracelevel <= 0) { BEGIN(SECT2); } else { BEGIN(ACTION); }
+	{NL}	++linenum; ACTION_ECHO; BEGIN(ACTION);
         .	ACTION_ECHO;
 }
 
